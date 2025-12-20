@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 import { AuthService, LoginRequest } from '../data-access/auth.api';
+import { UILogin } from '../UI/login/login';
 
 @Component({
   selector: 'lib-feature-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, UILogin],
   templateUrl: './feature-login.html',
   styleUrl: './feature-login.css'
 })
@@ -24,14 +25,8 @@ export class FeatureLogin {
     }),
   });
 
-  onSubmit(): void {
+  onSubmit(payload: LoginRequest): void {
 
-    const payload: LoginRequest = {
-      emailId: this.form.value.emailId || '',
-      password: this.form.value.password || ''
-    };
-
-    // აქ შემდეგში ჩასვამ:
     this.#api.login(payload).pipe(
       tap(v => console.log(v))
     ).subscribe()

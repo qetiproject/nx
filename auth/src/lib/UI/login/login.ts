@@ -3,17 +3,17 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginRequest } from '../../data-access/auth.api';
 
 @Component({
-  selector: 'lib-feature-login',
+  selector: 'lib-login',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class FeatureLogin {
+export class UILogin {
   @Input() form!: FormGroup;
   @Output() submitForm = new EventEmitter<LoginRequest>();
 
   onSubmit(): void {
-    this.submitForm.emit(this.form.value);
+    this.submitForm.emit(this.form.getRawValue());
   }
 }
