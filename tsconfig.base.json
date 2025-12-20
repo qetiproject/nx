@@ -8,7 +8,8 @@
     "lib": ["es2020", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@foocaompany/utils": ["utils/src/index.ts"]
+      "@foocaompany/utils": ["utils/src/index.ts"],
+      "@foocaompany/auth": ["auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
